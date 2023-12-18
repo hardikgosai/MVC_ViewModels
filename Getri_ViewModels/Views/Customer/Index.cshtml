@@ -21,12 +21,49 @@
         </thead>
         @{
             var cnt = 0;
+            Type type = typeof(Customer);
+            int NumberOfRecords = type.GetProperties().Length;
         }
 
         <tbody>
             @foreach(var item in Model)
             {
-                <tr>
+                foreach (var address in item.Address)
+                {
+                    if(cnt < item.Address.Count)
+                    {
+                        if(cnt == 0)
+                        {
+                            <tr>
+                                <td>@item.Customer.CustomerId</td>
+                                <td>@item.Customer.CustomerName</td>
+                                <td>@item.Customer.CustomerEmail</td>
+                                <td>@item.Customer.CustomerGender</td>
+                                <td>@item.Customer.CustomerContact</td>
+                                <td>@item.Address[cnt].Country</td>
+                                <td>@item.Address[cnt].State</td>
+                                <td>@item.Address[cnt].City</td>
+                                <td>@item.Address[cnt].Pincode</td>
+                            </tr>
+                            cnt++;
+                        }
+                        else
+                        {                       
+                                if(cnt > 0)
+                                {
+                                    <tr>
+                                    <td colspan="@NumberOfRecords"></td>
+                                        <td>@item.Address[cnt].Country</td>
+                                        <td>@item.Address[cnt].State</td>
+                                        <td>@item.Address[cnt].City</td>
+                                        <td>@item.Address[cnt].Pincode</td>
+                                    </tr>
+                                    cnt++;
+                                }                        
+                        }
+                    }
+                }
+               @*  <tr>
                     <td>@item.Customer.CustomerId</td>
                     <td>@item.Customer.CustomerName</td>
                     <td>@item.Customer.CustomerEmail</td>
@@ -45,7 +82,7 @@
                             </table>
                         }
                     </td>
-                </tr>
+                </tr> *@
 
             }
         </tbody>
