@@ -1,0 +1,38 @@
+﻿@model Getri_ViewModels.ViewModel.EmployeeDetailsViewModel
+
+<html>
+
+<head>
+    <title>@Model.PageTitle</title>
+</head>
+
+<body>
+    <h2>@Model.PageHeader</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Model.PageTitle</th>
+            </tr>
+        </thead>
+
+        <tr>
+            <th>Employee Details</th>
+            <td>@Model.Employee.EmpId</td>
+            <td>@Model.Employee.EmpName</td>
+            <td>@Model.Employee.EmpGender</td>
+            <td>@Model.Employee.EmpDept</td>
+            <td>@Model.Employee.EmpSal</td>
+            <td>@Model.Employee.AddressId</td>
+        </tr>
+
+        <tr>
+            <th>Address Details</th>
+            <td>@Model.Address.AddressId</td>            
+            <td>@Model.Address.City</td>
+            <td>@Model.Address.State</td>
+            <td>@Model.Address.Country</td>
+            <td>@Model.Address.Pincode</td>
+        </tr>
+    </table>
+</body>
+</html>

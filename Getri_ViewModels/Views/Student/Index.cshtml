@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Getri_ViewModels.ViewModel.StudentDetailViewModel>
+
+<html>
+    <head>
+        <title>Student Details</title>
+    </head>
+    <body>        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th colspan="5">Student Details</th>
+                    <th colspan="4">Address Details</th>
+                </tr>
+            </thead>
+            @foreach(var item in Model)
+            {
+                <tr>                    
+                    <td>@item.Student.StudentId</td>
+                    <td>@item.Student.Name</td>
+                    <td>@item.Student.Gender</td>
+                    <td>@item.Student.Branch</td>
+                    <td>@item.Student.Section</td>
+
+
+                <!--<td>@item.Address.StudentId</td>-->
+                    <td>@item.Address.City</td>
+                    <td>@item.Address.State</td>
+                    <td>@item.Address.Country</td>
+                    <td>@item.Address.Pincode</td>
+                </tr>
+            }            
+        </table>
+    </body>
+</html>
