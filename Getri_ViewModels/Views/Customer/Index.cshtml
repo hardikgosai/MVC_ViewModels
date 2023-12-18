@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Getri_ViewModels.ViewModel.CustomerDetailsViewModel>
+
+<html>
+    <head>
+        <title>Customer Details</title>
+    </head>
+    <body>
+        <table class="table table-striped">
+         <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Gender</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Pincode</th>
+            </tr>
+        </thead>
+        @{
+            var cnt = 0;
+        }
+
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Customer.CustomerId</td>
+                    <td>@item.Customer.CustomerName</td>
+                    <td>@item.Customer.CustomerEmail</td>
+                    <td>@item.Customer.CustomerGender</td>
+                    <td>@item.Customer.CustomerContact</td>
+                    <td colspan="4">
+                        @foreach (var address in item.Address)
+                        {
+                            <table class="table table-striped">
+                                <tr>
+                                    <td>@address.City</td>
+                                    <td>@address.State</td>                                    
+                                    <td>@address.Country</td>
+                                    <td>@address.Pincode</td>
+                                </tr>
+                            </table>
+                        }
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+        </table>
+    </body>
+</html>

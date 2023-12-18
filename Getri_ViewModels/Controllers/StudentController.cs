@@ -21,6 +21,7 @@ namespace Getri_ViewModels.Controllers
             address.State = "Karnataka";
             address.City = "Bangalore";
             address.Pincode = 560001;
+            
             StudentDetailViewModel studentDetailViewModel = new StudentDetailViewModel();
             studentDetailViewModel.Student = student;
             studentDetailViewModel.Address = address;
@@ -38,10 +39,12 @@ namespace Getri_ViewModels.Controllers
             address.State = "Gujarat";
             address.City = "Ahmedabad";
             address.Pincode = 380001;
+            
             studentDetailViewModel = new StudentDetailViewModel();
             studentDetailViewModel.Student = student;
             studentDetailViewModel.Address = address;
             studentList.Add(studentDetailViewModel);
+            
             return View(studentList);
         }
     }
