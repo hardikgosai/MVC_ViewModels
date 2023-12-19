@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Getri_ViewModels.ViewModel.PersonDetailsViewModel>
+
+<html>
+<head>
+    <title>Person Details</title>
+</head>
+<body>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Person Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Gender</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Pincode</th>
+            </tr>
+        </thead>
+        @{           
+            Type type = typeof(Person);
+            int NumberOfRecords = type.GetProperties().Length;
+        }
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var cnt = 0;
+                foreach (var address in item.Addresses)
+                {
+                    if (cnt < item.Addresses.Count)
+                    {
+                        if (cnt == 0)
+                        {
+                            <tr>
+                                <td>@item.Person.PersonId</td>
+                                <td>@item.Person.Name</td>
+                                <td>@item.Person.Email</td>
+                                <td>@item.Person.Gender</td>
+                                <td>@item.Person.Contact</td>
+                                <td>@item.Addresses[cnt].Country</td>
+                                <td>@item.Addresses[cnt].State</td>
+                                <td>@item.Addresses[cnt].City</td>
+                                <td>@item.Addresses[cnt].Pincode</td>
+                            </tr>
+                            cnt++;
+                        }
+                        else
+                        {
+                            if (cnt > 0)
+                            {
+                                <tr>
+                                    <td colspan="@NumberOfRecords"></td>
+                                    <td>@item.Addresses[cnt].Country</td>
+                                    <td>@item.Addresses[cnt].State</td>
+                                    <td>@item.Addresses[cnt].City</td>
+                                    <td>@item.Addresses[cnt].Pincode</td>
+                                </tr>
+                                cnt++;
+                            }
+                        }
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>
